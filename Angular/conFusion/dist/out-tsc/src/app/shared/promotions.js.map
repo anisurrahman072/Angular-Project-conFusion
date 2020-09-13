@@ -1,0 +1,1 @@
+{"version":3,"file":"promotions.js","sourceRoot":"","sources":["../../../../../src/app/shared/promotions.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,MAAM,UAAU,GAAgB;IACnC;QACI,EAAE,EAAE,GAAG;QACP,IAAI,EAAE,sBAAsB;QAC5B,KAAK,EAAE,2BAA2B;QAClC,KAAK,EAAE,KAAK;QACZ,KAAK,EAAE,OAAO;QACd,QAAQ,EAAE,IAAI;QACd,2CAA2C;QAC3C,WAAW,EAAE,wNAAwN;KACxO;CACJ,CAAC"}

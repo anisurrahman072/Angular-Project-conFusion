@@ -1,0 +1,105 @@
+<div class="container"
+  fxLayout="column"
+  fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+        <h3><b>Contact Us</b></h3>
+        <hr>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <h3>Location Information</h3> 
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div fxFlex="50" fxFlexOffset="20px">
+        <h4>Our Address</h4>
+        <address>
+          121, Clear Water Bay Road<br>
+          Clear Water Bay, Kowloon<br>
+          HONG KONG<br>
+          <i class="fa fa-phone"></i>: +852 1234 5678<br>
+          <i class="fa fa-fax"></i>: +852 8765 4321<br>
+          <i class="fa fa-envelope"></i>: 
+                <a href="mailto:confusion@food.net">confusion@food.net</a>
+        </address>
+        <p></p>
+        <div>
+          <a mat-raised-button href="tel:+85212345678"><i class="fa fa-phone"></i> Call</a>
+          <a mat-raised-button><i class="fa fa-skype"></i> Skype</a>
+          <a mat-raised-button href="mailto:confusion@food.net"><i class="fa fa-envelope-o"></i> Email</a>
+        </div>
+        </div>
+      <div fxFlex="40">
+        <h4>Map of our Location</h4>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="displayState == 'INPUTFORM'" fxFlex fxFlexOffset="20px" class="form-size" [@expand]>
+    <h3>Send us your Feedback</h3>
+    <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
+
+    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" #fform="ngForm">
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+          <mat-error *ngIf="formErrors.firstname"> {{formErrors.firstname}} </mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
+          <mat-error *ngIf="formErrors.lastname">{{formErrors.lastname}}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel" pattern="[0-9]*" required>
+          <mat-error *ngIf="formErrors.telnum">{{formErrors.telnum}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="email" placeholder="Email" type="email" email required>
+          <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+        </mat-form-field>
+      </p>
+      <table class="form-size">
+        <td>
+          <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
+        </td>
+        <td>
+          <mat-select placeholder="How?" formControlName="contacttype">
+            <mat-option *ngFor="let ctype of contactType" [value]="ctype">
+              {{ ctype }}
+            </mat-option>
+          </mat-select>
+        </td>
+        </table>
+      <p>
+        <mat-form-field class="full-width">
+          <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
+        </mat-form-field>
+      </p>
+      <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid" >Submit</button>
+    </form>
+  </div>
+
+  <div *ngIf="displayState == 'SPINNER'" [@expand]>
+    <h1>Submitting Form</h1>
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="displayState == 'SUBMISSION'" [@expand]>
+    <h2>Your Submission</h2>
+    <p><span>First Name: </span> {{ newFeedBack.firstname }} </p>
+    <p><span>Last Name: </span> {{ newFeedBack.lastname }} </p>
+    <p><span>Tel. Number: </span> {{ newFeedBack.telnum }} </p>
+    <p><span>Email: </span> {{ newFeedBack.email }} </p>
+    <p><span>Contact You?: </span> {{ newFeedBack.agree }} </p>
+    <p><span>How?: </span> {{ newFeedBack.contacttype }} </p>
+    <p><span>Feedback: </span> {{ newFeedBack.message }} </p>
+  </div>
+
+  <div *ngIf="displayState == 'ERROR'" [@expand]>
+    <h4>{{errMsg}}</h4>
+  </div>
+
+</div>

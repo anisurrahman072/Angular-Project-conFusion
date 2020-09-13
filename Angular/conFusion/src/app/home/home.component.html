@@ -1,0 +1,72 @@
+<div class="container"
+     fxLayout="row"
+     fxLayout.sm="column"
+     fxLayout.xs="column"
+     fxLayoutAlign.gt-md="space-around center"
+     fxLayoutGap="10px">
+
+<mat-card *ngIf="dish" fxFlex [@expand]>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>
+      <h3>{{dish.name | uppercase}}</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="{{BaseURL + dish.image}}" alt={{dish.name}}>
+  <mat-card-content>
+    <p>{{dish.description}}</p>
+  </mat-card-content>
+</mat-card>
+<div [hidden]="dish || dishErrMess"> <!-- here dish contains VALUE & dishErrMess contains the ERROE (if occured) -->
+  <mat-spinner></mat-spinner>
+  Loading....
+</div>
+<div *ngIf="dishErrMess">
+  <h1>Error</h1>
+  <p>{{dishErrMess}}</p>
+</div>
+
+<mat-card *ngIf="promotion" fxFlex [@expand]>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>
+      <h3>{{promotion.name | uppercase}}</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src='{{BaseURL + promotion.image}}' alt={{promotion.name}}>
+  <mat-card-content>
+    <p>{{promotion.description}}</p>
+  </mat-card-content>
+</mat-card>
+<div [hidden]="promotion || promotionErrMss">
+  <mat-spinner></mat-spinner>
+  Loading....
+</div>
+<div *ngIf="promotionErrMss">
+  <h1>Error</h1>
+  <p>{{promotionErrMss}}</p>
+</div>
+
+<mat-card *ngIf="leader" fxFlex [@expand]>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>
+      <h3><span>{{leader.name | uppercase}}</span><span> {{leader.abbr | uppercase}}</span></h3>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src='{{BaseURL + leader.image}}' alt={{leader.name}}>
+  <mat-card-content>
+    <p>{{leader.designation}}</p>
+    <p>{{leader.description}}</p>
+  </mat-card-content>
+</mat-card>
+<div [hidden]="leader || leaderErrMss">
+  <mat-spinner></mat-spinner>
+  Loading....
+</div>
+<div *ngIf="leaderErrMss">
+  <h1>Error</h1>
+  <p>{{leaderErrMss}}</p>
+</div>
+
+</div>
