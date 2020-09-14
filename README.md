@@ -14,7 +14,8 @@ This project is **frontend** of my Project conFusion & now it is working on **js
 - Reactive forms
 - Promise
 - RxJS
-- HTTPParams &
+- HTTPParams 
+- Angular Material &
 - some others features also
 ###### In future i shall integrate this frontend project with my `Backend Project` of conFusion Project and then upload the project in https://www.heroku.com/ ######
 
