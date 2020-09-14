@@ -1,6 +1,6 @@
 # Angular-Project-conFusion
 This project is ***frontend*** of my Project conFusion & now it is working on **json-server**. I have added the json-server inside my project. 
-The features of AngularJS that i have used here are:
+***The features of AngularJS that i have used here are:***
 - Angular navigation
 - Angular directives
 - Angular CLI
